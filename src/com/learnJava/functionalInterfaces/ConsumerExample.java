@@ -8,54 +8,48 @@ import java.util.function.Consumer;
 
 public class ConsumerExample {
 
-    static Consumer<Student>  c1= p -> System.out.println(p);
-
-    static Consumer<Student>  c2= p -> System.out.print(p.getName().toUpperCase());
-
-    static Consumer<Student>  c3= p -> System.out.println(p.getActivities());
-
-    static Consumer<String> cd = s -> System.out.println(s.toUpperCase());
+    static Consumer<Student> c2 = (student) -> System.out.println(student);
+    static Consumer<Student> c3 = (student) -> System.out.print(student.getName());
+    static Consumer<Student> c4 = (student) -> System.out.println(student.getActivities());
 
 
-    public static void printName(){
 
-        List<Student> personList = StudentDataBase.getAllStudents();
+    public static void printStudents(){
 
-        personList.forEach(c1);
 
+        List<Student> studentList = StudentDataBase.getAllStudents();
+        studentList.forEach(c2);
     }
 
     public static void printNameAndActivities(){
-        System.out.println("printNameAndActivities : ");
-        List<Student> personList = StudentDataBase.getAllStudents();
-        personList.forEach(c2.andThen(c3));
+        System.out.println("printNameAndActivities :");
+
+        List<Student> studentList = StudentDataBase.getAllStudents();
+
+        studentList.forEach(c3.andThen(c4)); //consumer chaining
     }
 
+
     public static void printNameAndActivitiesUsingCondition(){
-        System.out.println("printNameAndActivitiesUsingCondition : ");
-        List<Student> personList = StudentDataBase.getAllStudents();
-        personList.forEach((s) -> {
-            if( s.getGradeLevel()>=3 && s.getGpa()>3.9){
-                c2.andThen(c3).accept(s);
+
+        System.out.println("printNameAndActivitiesUsingCondition :");
+        List<Student> studentList = StudentDataBase.getAllStudents();
+
+        studentList.forEach((student -> {
+            if(student.getGradeLevel()>=3 && student.getGpa()>=3.9){
+                c3.andThen(c4).andThen(c2).accept(student);
             }
-        });
+        }));
     }
+
 
     public static void main(String[] args) {
 
-        Consumer<String> c1 = (s) -> System.out.println(s.toUpperCase());
+      Consumer<String> c1 = (s) -> System.out.println(s.toUpperCase());
 
-        c1.accept("java8");
-
-        printName();
+      c1.accept("java8");
+        printStudents();
         printNameAndActivities();
         printNameAndActivitiesUsingCondition();
-
-        cd.accept("abc");
-
-
-
-
-
     }
 }

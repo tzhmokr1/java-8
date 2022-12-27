@@ -2,13 +2,14 @@ package com.learnJava.functionalInterfaces;
 
 public class FunctionExample1 {
 
-    public String appendDefault(String input){
+	public static String performConcat(String str) {
 
-        return FunctionExample.addSomeString.apply(input);
-    }
+		return FunctionExample.addSomeString.apply(str);
+	}
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-    }
-
+		String result = performConcat("Hello");
+		System.out.println("Result : " + result);
+	}
 }

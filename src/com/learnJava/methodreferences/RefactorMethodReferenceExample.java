@@ -9,28 +9,22 @@ import java.util.function.Predicate;
 
 public class RefactorMethodReferenceExample {
 
-    static Predicate<Student> predicateUsingLambda = (s) -> s.getGradeLevel()>=3;
+	static Predicate<Student> p1 = (s) -> s.getGradeLevel() >= 3;
 
-    static Predicate<Student> predicateUsingMetRef = RefactorMethodReferenceExample::greaterThan;
+	static Predicate<Student> p2 = RefactorMethodReferenceExample::greaterThanGreadeLevel;
+	
+	
+	static public boolean greaterThanGreadeLevel(Student s) {
 
+		return s.getGradeLevel() >= 3;
+	}
 
-    static BiPredicate<Student,Integer> predicateUsingMethodReference = RefactorMethodReferenceExample::greaterThan;
+	
+	
+	
+	public static void main(String[] args) {
 
-    static public  boolean greaterThan(Student student){
-
-        return student.getGradeLevel() >3;
-    }
-
-   static public  boolean greaterThan(Student student,Integer grade){
-
-        return student.getGradeLevel() >grade;
-    }
-
-    public static void main(String[] args) {
-
-        System.out.println(predicateUsingLambda.test(StudentDataBase.studentSupplier.get()));
-        System.out.println(predicateUsingMetRef.test(StudentDataBase.studentSupplier.get()));
-        System.out.println(predicateUsingMethodReference.test(StudentDataBase.studentSupplier.get(),3));
-
-    }
+		System.out.println(p1.test(StudentDataBase.studentSupplier.get()));
+		System.out.println(p2.test(StudentDataBase.studentSupplier.get()));
+	}
 }

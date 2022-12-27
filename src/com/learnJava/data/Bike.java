@@ -4,6 +4,8 @@ public class Bike {
 
     private String name;
     private String model;
+    
+    public Bike() {}
 
     public Bike(String name, String model) {
         this.name = name;

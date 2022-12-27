@@ -44,8 +44,7 @@ public class ComparatorLambda {
 
         System.out.println(comparatorLambda1.compare(1,2));
 
-        System.out.println("The greatest integer is : " + compareTwoIntegers(comparatorLambda,1,2));
+		System.out.println("The greatest integer is : " + compareTwoIntegers(comparatorLambda, 1, 2));
 
-
-    }
+	}
 }

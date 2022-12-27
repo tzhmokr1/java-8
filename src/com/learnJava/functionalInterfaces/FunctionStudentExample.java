@@ -7,27 +7,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class FunctionStudentExample {
 
-    static Function<List<Student>, Map<String, Double>>  function = (students -> {
+	static Function<List<Student>, Map<String, Double>> studentFunction = (students -> {
 
-        Map<String,Double> studentGradeMap = new HashMap<>();
-        students.forEach((student -> {
+		Map<String, Double> studentGrademap = new HashMap<>();
+		
+		students.forEach((student -> {
+			
+			if (PredicateStudentExample.p1.test(student)) {
+				studentGrademap.put(student.getName(), student.getGpa());
+			}
 
-            if(PredicateStudentExample.p1.test(student)){
-                studentGradeMap.put(student.getName(),student.getGpa());
-            }
-        }));
+		}));
+		return studentGrademap;
 
-        return studentGradeMap;
+	});
 
-    });
+	public static void main(String[] args) {
 
-    public static void main(String[] args) {
-
-        System.out.println(function.apply(StudentDataBase.getAllStudents()));
-
-    }
+		System.out.println(studentFunction.apply(StudentDataBase.getAllStudents()));
+	}
 }

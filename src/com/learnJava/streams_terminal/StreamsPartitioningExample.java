@@ -14,46 +14,45 @@ import static java.util.stream.Collectors.toSet;
 
 public class StreamsPartitioningExample {
 
-    public static void partitioningBy_1(){
+	public static void partitioningBy_1() {
 
-        Predicate<Student> gpaPredicate = (student) -> student.getGpa()>=3.8;
+		Predicate<Student> gpaPredicate = (student) -> student.getGpa() >= 3.8;
 
-        Map<Boolean,List<Student>> studentMap = StudentDataBase.getAllStudents()
-                .stream()
-                .collect(partitioningBy(gpaPredicate));
+		Map<Boolean, List<Student>> studentMap = StudentDataBase.getAllStudents()
+				.stream()
+				.collect(partitioningBy(gpaPredicate)); // returns true or false key
 
-        System.out.println("studentMap : " + studentMap);
+		System.out.println("studentMap : " + studentMap);
 
-    }
+	}
 
-    public static void partitioningBy_2(){
+	public static void partitioningBy_2() {
 
-        Predicate<Student> gpaPredicate = (student) -> student.getGpa()>=3.8;
+		Predicate<Student> gpaPredicate = (student) -> student.getGpa() >= 3.8;
 
-        Map<Boolean,Set<Student>> studentMap = StudentDataBase.getAllStudents()
-                .stream()
-                .collect(partitioningBy(gpaPredicate,toSet()));
+		Map<Boolean, Set<Student>> studentMap = StudentDataBase.getAllStudents()
+				.stream()
+				.collect(partitioningBy(gpaPredicate, toSet()));
 
-        System.out.println("studentMap : " + studentMap);
+		System.out.println("studentMap : " + studentMap);
 
-    }
+	}
 
+	public static void partitioningBy_3() {
 
-    public static void partitioningBy_3(){
+		Predicate<Student> gpaPredicate = (student) -> student.getGpa() >= 3.8;
 
-        Predicate<Student> gpaPredicate = (student) -> student.getGpa()>=3.8;
+		Map<Boolean, Map<String, List<String>>> studentMap = StudentDataBase.getAllStudents()
+				.stream()
+				.collect(partitioningBy(gpaPredicate, toMap(Student::getName, Student::getActivities)));
 
-        Map<Boolean,Map<String, List<String>>> studentMap = StudentDataBase.getAllStudents()
-                .stream()
-                .collect(partitioningBy(gpaPredicate,toMap(Student::getName,Student::getActivities)));
+		System.out.println("studentMap : " + studentMap);
 
-        System.out.println("studentMap : " + studentMap);
+	}
 
-    }
-
-    public static void main(String[] args) {
-        partitioningBy_1();
-        partitioningBy_2();
-        partitioningBy_3();
-    }
+	public static void main(String[] args) {
+		partitioningBy_1();
+		partitioningBy_2();
+		partitioningBy_3();
+	}
 }

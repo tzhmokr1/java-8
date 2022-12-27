@@ -4,35 +4,28 @@ import com.learnJava.data.StudentDataBase;
 
 public class StreamsMatchExample {
 
+	public static boolean allMatch() {
 
-    public static boolean allMatch(){
+		return StudentDataBase.getAllStudents().stream().allMatch(student -> student.getGpa() >= 3.5);
+	}
 
-        boolean result = StudentDataBase.getAllStudents().stream()
-                .allMatch(student -> student.getGpa()>=3.9);
+	public static boolean anyMatch() {
 
-        return result;
-    }
+		return StudentDataBase.getAllStudents().stream().anyMatch(student -> student.getGpa() >= 4.0);
+	}
 
-    public static boolean anyMatch(){
+	public static boolean noneMatch() {
 
-        boolean result = StudentDataBase.getAllStudents().stream()
-                .anyMatch(student -> student.getGpa()>=3.9);
+		return StudentDataBase.getAllStudents().stream().noneMatch(student -> student.getGpa() >= 4.0);
+	}
 
-        return result;
-    }
+	
+	
+	
+	public static void main(String[] args) {
 
-    public static boolean noneMatch(){
-
-        boolean result = StudentDataBase.getAllStudents().stream()
-                .noneMatch(student -> student.getGpa()>=3.9);
-
-        return result;
-    }
-
-    public static void main(String[] args) {
-
-        System.out.println("Result of allMatch : " + allMatch());
-        System.out.println("Result of anyMatch : " + anyMatch());
-        System.out.println("Result of noneMatch : " + noneMatch());
-    }
+		System.out.println("Result of All Match :" + allMatch());
+		System.out.println("Result of Any Match :" + anyMatch());
+		System.out.println("Result of none Match :" + noneMatch());
+	}
 }

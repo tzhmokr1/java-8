@@ -10,20 +10,18 @@ import static java.util.stream.Collectors.toList;
 
 public class StreamsFilterExample {
 
-    public static List<Student> filterStudents(){
+	public static List<Student> filterStudents() {
+		
+		return StudentDataBase.getAllStudents().stream()
+										.filter(student -> student.getGender().equals("female"))
+										.filter(student -> student.getGpa() >= 3.9)
+										.collect(toList());
 
-        List<Student> filteredStudentList = StudentDataBase.getAllStudents()
-                .stream()
-                .filter(student -> student.getGpa()>=3.9)
-                .filter(student -> student.getGender().equals("female"))
-                .collect(toList());
+	}
 
-        return filteredStudentList;
-    }
+	public static void main(String[] args) {
 
-    public static void main(String[] args) {
-
-        System.out.println("Filtered Students : " + filterStudents());
+        filterStudents().forEach(System.out::println);
 
     }
 }

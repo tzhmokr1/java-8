@@ -4,14 +4,10 @@ import java.util.function.UnaryOperator;
 
 public class UnaryOperatorExample {
 
-    static UnaryOperator<String> unaryOperator = (s)->s.concat("Default");
+	static UnaryOperator<String> unaryOperator = (s) -> s.concat("Default");
 
+	public static void main(String[] args) {
 
-
-    public static void main(String[] args) {
-
-        System.out.println(unaryOperator.apply("java8"));
-
-
-    }
+		System.out.println(unaryOperator.apply("java8"));
+	}
 }

@@ -9,18 +9,16 @@ import java.util.function.Supplier;
 
 public class SupplierExample {
 
-    public static  Supplier<Student> studentSupplier = () -> {
-      return  new Student("Adam",2,4.0,"male", Arrays.asList("swimming", "basketball","volleyball"));
-    };
+	public static void main(String[] args) {
 
-    public static  Supplier<List<Student>> studentsSupplier = () -> StudentDataBase.getAllStudents();
+		Supplier<Student> studentSupplier = () -> {
+			return new Student("Adam", 2, 3.6, "male", Arrays.asList("swimming", "basketball", "volleyball"));
+		};
 
-    public static void main(String[] args) {
+		Supplier<List<Student>> listSupplier = () -> StudentDataBase.getAllStudents();
 
-        Student student = studentSupplier.get();
+		System.out.println("Student is : " + studentSupplier.get());
 
-        System.out.println("Student is : " + student);
-
-        System.out.println("Students are : " + studentsSupplier.get());
-    }
+		System.out.println("Students are : " + listSupplier.get());
+	}
 }

@@ -1,34 +1,73 @@
 package com.learnJava.streams;
 
-import com.learnJava.data.Student;
-import com.learnJava.data.StudentDataBase;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 public class StreamsMaxMinExample {
 
+    public static int findMaxvalue(List<Integer> integerList){
 
-    public static Optional<Integer> maxValue(List<Integer> integerList){
         return integerList.stream()
-                //.reduce(0,(a,b)->(a>b) ? a : b);
-        .reduce(Integer::max);
+                //6 -> y
+                //7 -> y
+                //8-> y
+                //9-> y
+                //10-> y
+                //x variable holds the max value for each element in the iteration
+                .reduce(0,(x,y)-> x>y ? x : y);
     }
 
-    public static Optional<Integer> minValue(List<Integer> integerList){
+    public static Optional<Integer> findMinvalue(List<Integer> integerList){
+
         return integerList.stream()
-                .reduce((a,b)->(a<b) ? a : b);
-                //.reduce(0,Integer::min);
+                //6 -> y
+                //7 -> y
+                //8-> y
+                //9-> y
+                //10-> y
+                //x variable holds the max value for each element in the iteration
+                .reduce((x,y)-> x<y ? x : y);
     }
 
+    public static Optional<Integer> findMaxvalueOptional(List<Integer> integerList){
+
+        return integerList.stream()
+                //6 -> y
+                //7 -> y
+                //8-> y
+                //9-> y
+                //10-> y
+                //x variable holds the max value for each element in the iteration
+                .reduce((x,y)-> x>y ? x : y);
+    }
 
     public static void main(String[] args) {
-        List<Integer> integers = Arrays.asList(6,7,8,9,10);
-        Optional<Integer> maxValue =maxValue(integers);
-        int max = maxValue.isPresent() ? maxValue.get():0;
-        System.out.println("Max Value is : " + max);
 
-        Optional<Integer> minValue =minValue(integers);
-        int min = maxValue.isPresent() ? minValue.get():0;
-        System.out.println("Min Value is : " + min);
+       // List<Integer> integerList = Arrays.asList(6,7,8,9,10);
+        List<Integer> integerList = new ArrayList<>();
+
+        Optional<Integer> minValueOptional = findMinvalue(integerList);
+        System.out.println("minValueOptional : " + minValueOptional);
+
+        if(minValueOptional.isPresent()){
+            System.out.println("The minimum value is : " + minValueOptional.get());
+        }else{
+            System.out.println("No Input is passed");
+        }
+
+       /* int maxValue = findMaxvalue(integerList);
+        System.out.println(" max value is :" + maxValue);
+
+        Optional<Integer> maxValueOptional = findMaxvalueOptional(integerList);
+        System.out.println("Optional Max is : " + maxValueOptional);
+        if(maxValueOptional.isPresent()){
+            System.out.println("MaxValue using optional :" + maxValueOptional.get());
+        }else{
+            System.out.println("Input list is empty.");
+        }*/
+
+
     }
 }

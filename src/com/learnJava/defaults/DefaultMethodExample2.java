@@ -23,6 +23,7 @@ public class DefaultMethodExample2 {
         studentList.forEach(studentConsumer);
     }
 
+    
     public static void sortByGPA(List<Student> studentList){
 
         studentList.sort(gpaComparator);
@@ -30,6 +31,7 @@ public class DefaultMethodExample2 {
         studentList.forEach(studentConsumer);
     }
 
+    
     public static void sortByGender(){
 
         List<Student> studentList = StudentDataBase.getAllStudents();
@@ -37,7 +39,6 @@ public class DefaultMethodExample2 {
         studentList.sort(nullLast);
         System.out.println("After Sort By Gender : ");
         studentList.forEach(studentConsumer);
-
     }
 
 
@@ -49,6 +50,7 @@ public class DefaultMethodExample2 {
         studentList.forEach(studentConsumer);
     }
 
+    
     public static void main(String[] args) {
         List<Student> studentList = StudentDataBase.getAllStudents();
         System.out.println("Original List");
@@ -57,6 +59,5 @@ public class DefaultMethodExample2 {
         sortByName(studentList);
         sortByGPA(studentList);*/
         comparatorChaining();
-
     }
 }

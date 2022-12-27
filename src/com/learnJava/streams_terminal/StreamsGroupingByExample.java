@@ -22,7 +22,7 @@ public class StreamsGroupingByExample {
 
     public  static void customizedGroupingBy(){
 
-        Map<String,List<Student>> studentMap =  StudentDataBase.getAllStudents()
+        Map<String, List<Student>> studentMap =  StudentDataBase.getAllStudents()
                 .stream()
                 .collect(Collectors.groupingBy(student -> student.getGpa()>= 3.8 ?  "OUTSTANDING" : "AVERAGE"));
 
@@ -34,9 +34,10 @@ public class StreamsGroupingByExample {
      */
     public  static void twoLevelGrouping(){
 
-        Map<Integer,  Map<String,List<Student>>> studentMap =  StudentDataBase.getAllStudents().stream()
+        Map<Integer, Map<String,List<Student>>> studentMap =  StudentDataBase.getAllStudents()
+        		.stream()
                 .collect(groupingBy(Student::getGradeLevel,
-                        groupingBy(student -> student.getGpa()>= 3.8 ?  "OUTSTANDING" : "AVERAGE")));
+             groupingBy(student -> student.getGpa()>= 3.8 ?  "OUTSTANDING" : "AVERAGE")));
 
         Stream.of(studentMap).forEach(System.out::println);
 
@@ -47,9 +48,10 @@ public class StreamsGroupingByExample {
      */
     public  static void twoLevelGrouping_2(){
 
-        Map<String,Integer> nameNoteBooksMap = StudentDataBase.getAllStudents().stream()
+        Map<String,Integer> nameNoteBooksMap = StudentDataBase.getAllStudents()
+        		.stream()
                 .collect(groupingBy(Student::getName,
-                        summingInt(Student::getNoteBooks)));// second argument can be of any type of collector
+             summingInt(Student::getNoteBooks)));// second argument can be of any type of collector
 
         System.out.println(nameNoteBooksMap);
     }
@@ -59,9 +61,10 @@ public class StreamsGroupingByExample {
      */
     public  static void twoLevelGrouping_3(){
 
-        Map<String,Set<Student>> nameNoteBooksMap = StudentDataBase.getAllStudents().stream()
+        Map<String,Set<Student>> nameNoteBooksMap = StudentDataBase.getAllStudents()
+        		.stream()
                 .collect(groupingBy(Student::getName,
-                        toSet()));// second argument can be of any type of collector
+             toSet()));// second argument can be of any type of collector
 
         System.out.println(nameNoteBooksMap);
     }
@@ -69,9 +72,11 @@ public class StreamsGroupingByExample {
 
     public static void threeArgumentGroupingBy(){
 
-        LinkedHashMap<String,Set<Student>> studentMap = StudentDataBase.getAllStudents().stream()
-                .collect(groupingBy(Student::getName,LinkedHashMap::new,
-                        toSet()));
+        LinkedHashMap<String,Set<Student>> studentMap = StudentDataBase.getAllStudents()
+        		.stream()
+                .collect(groupingBy(Student::getName,
+             LinkedHashMap::new,
+             toSet()));
 
         System.out.println(" studentMap : " + studentMap);
     }
@@ -79,17 +84,20 @@ public class StreamsGroupingByExample {
 
     public  static void calculteTopGpaStudentinEachGrade(){
 
-        Map<Integer, Optional<Student>> studentMapOptional =  StudentDataBase.getAllStudents().stream()
-                .collect(groupingBy(Student::getGradeLevel,maxBy(Comparator.comparingDouble(Student::getGpa))
+        Map<Integer, Optional<Student>> studentMapOptional =  StudentDataBase.getAllStudents()
+        		.stream()
+                .collect(groupingBy(Student::getGradeLevel,
+             maxBy(Comparator.comparingDouble(Student::getGpa))
                 ));
 
         Stream.of(studentMapOptional).forEach(System.out::println);
 
 
-        Map<Integer, Student> studentMap =  StudentDataBase.getAllStudents().stream()
+        Map<Integer, Student> studentMap =  StudentDataBase.getAllStudents()
+        		.stream()
                 .collect(groupingBy(Student::getGradeLevel,
-                        collectingAndThen(maxBy(Comparator.comparingDouble(Student::getGpa))
-                        ,Optional::get
+             collectingAndThen(maxBy(Comparator.comparingDouble(Student::getGpa)),
+               Optional::get
                 )));
 
         Stream.of(studentMap).forEach(System.out::println);
@@ -97,8 +105,10 @@ public class StreamsGroupingByExample {
 
     public  static void calculteleastGpaStudentinEachGrade(){
 
-        Map<Integer, Optional<Student>> studentMapOptional =  StudentDataBase.getAllStudents().stream()
-                .collect(groupingBy(Student::getGradeLevel,minBy(Comparator.comparingDouble(Student::getGpa))
+        Map<Integer, Optional<Student>> studentMapOptional =  StudentDataBase.getAllStudents()
+        		.stream()
+                .collect(groupingBy(Student::getGradeLevel,
+             minBy(Comparator.comparingDouble(Student::getGpa))
                 ));
 
         Stream.of(studentMapOptional).forEach(System.out::println);
@@ -106,8 +116,8 @@ public class StreamsGroupingByExample {
 
         Map<Integer, Student> studentMap =  StudentDataBase.getAllStudents().stream()
                 .collect(groupingBy(Student::getGradeLevel,
-                        collectingAndThen(minBy(Comparator.comparingDouble(Student::getGpa))
-                                ,Optional::get
+             collectingAndThen(minBy(Comparator.comparingDouble(Student::getGpa)),
+               Optional::get
                         )));
 
         Stream.of(studentMap).forEach(System.out::println);
@@ -116,10 +126,10 @@ public class StreamsGroupingByExample {
     public static void main(String[] args) {
 
         //groupingByGender();
-        //groupByGrade();
-        twoLevelGrouping();
+    	//customizedGroupingBy();
+        //twoLevelGrouping();
         //twoLevelGrouping_2();
-        //twoLevelGrouping_3();
+        twoLevelGrouping_3();
         //calculteTopGpaStudentinEachGrade();
         //calculteleastGpaStudentinEachGrade();
        // threeArgumentGroupingBy();

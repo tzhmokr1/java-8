@@ -14,52 +14,62 @@ import static java.util.stream.Collectors.toList;
 
 public class StreamReduceExample {
 
-    public static int performMultiplication(List<Integer> integerList){
+	public static int performMultiplication(List<Integer> integerList) {
 
-        return integerList.stream()
-                .reduce(1, (a,b) -> a*b);
+		return integerList.stream()
+				// 1
+				// 3
+				// 5
+				// 7
+				// 'a' = is always the result
+				// 'b' = comes from the Stream
+				// a= 1, b=1 => result is 1
+				// a= 1, b=3 => result is 3
+				// a= 3, b=5 => result is 15
+				// a=15, b=7 => result is 105
+				.reduce(1, (a, b) -> a * b);
 
-    }
+	}
 
-    public static Optional<Integer> performMultiplicationWithNoInitialValue(List<Integer> integerList){
+	// The Optional handels the null value without Idendity gracefully
+	public static Optional<Integer> performMultiplicationWithoutIdendity(List<Integer> integerList) {
 
-        return integerList.stream()
-                .reduce( (a,b) -> a*b); // performs multiplication for each element in the stream and returns a new result fo.
-    }
+		return integerList.stream().reduce((a, b) -> a * b);
+	}
+	
+	public static Optional<Student> getHightestGpaStudent() {
+		
+		return StudentDataBase.getAllStudents().stream()
+												.reduce((s1, s2) -> s1.getGpa() > s2.getGpa() ? s1 : s2);
+	}
 
-    public static String combineStudentNames(){
+	
+	
+	public static void main(String[] args) {
 
-        return StudentDataBase.getAllStudents().stream()
-                .map(Student::getName)
-                .distinct()
-                .reduce("",(a,b) -> a.concat(b));  // performs multiplication for each element in the stream.
-    }
+		List<Integer> integers = Arrays.asList(1, 3, 5, 7);
+		List<Integer> integers1 = Arrays.asList();
+		
+		System.out.println(performMultiplication(integers));
+		
+		Optional<Integer> result = performMultiplicationWithoutIdendity(integers);
+		System.out.println(result.isPresent());
+		System.out.println(result.get());
+		
+		Optional<Integer> result1 = performMultiplicationWithoutIdendity(integers1);
+		if(result1.isPresent()) {
+			System.out.println(result1.get());
+		}
+		
+		Optional<Student> studentOptional = getHightestGpaStudent();
+		if (studentOptional.isPresent()) {
+			System.out.println(studentOptional.get());
+		}
+		
+		
+		
+		
+		
 
-    public static Optional<Student> getHighestGradeStudent(){
-
-        Optional<Student> studentOptional =  StudentDataBase.getAllStudents().stream()
-                .reduce((s1,s2)->(s1.getGpa()>s2.getGpa()) ? s1 : s2);
-        return studentOptional;
-    }
-
-
-
-
-    public static void main(String[] args) {
-
-        List<Integer> integerList = Arrays.asList(1,3,5,7);
-        //List<Integer> integerList = Arrays.asList();
-
-        System.out.println("Result is : " + performMultiplication(integerList));
-        Optional<Integer> result = performMultiplicationWithNoInitialValue(integerList);
-
-        if(result.isPresent()){
-            System.out.println("Result is : " +result.get());
-        }else{
-            System.out.println("Result is : " +0);
-        }
-
-        System.out.println(combineStudentNames());
-        System.out.println(getHighestGradeStudent().get());
-    }
+	}
 }

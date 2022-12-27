@@ -18,7 +18,6 @@ public class NumericStreamMapExample {
                 .collect(toList());
 
         return integerList;
-
     }
 
     public static double mapToDouble(){
@@ -26,17 +25,16 @@ public class NumericStreamMapExample {
       return   IntStream.rangeClosed(1,5)
                 .mapToDouble((i) ->  i)
                 .sum();
-
     }
 
     public static long mapToLong(){
 
-        return   IntStream.rangeClosed(1,5)
-                .mapToLong((i) ->  i)
-                .sum();
-
+		return IntStream.rangeClosed(1, 5).mapToLong((i) -> i).sum();
     }
 
+    
+    
+    
     public static void main(String[] args) {
 
         System.out.println("mapToObj : " + mapToObj());
@@ -44,6 +42,5 @@ public class NumericStreamMapExample {
         System.out.println("mapToDouble() : " + mapToDouble());
 
         System.out.println("mapToLong() : " + mapToLong());
-
     }
 }

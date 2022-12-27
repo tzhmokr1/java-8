@@ -9,7 +9,6 @@ public class DefaultMethodsExample1 {
 
     public static void main(String[] args) {
 
-
         List<String> stringList  = Arrays.asList("Adam", "Jenny", "Alex","Eric","Mike");
 
        /* Collections.sort(stringList);
@@ -24,7 +23,5 @@ public class DefaultMethodsExample1 {
         stringList.sort(Comparator.reverseOrder());
 
         System.out.println("Reverse Sorted list : " +  stringList);
-
-
     }
 }
