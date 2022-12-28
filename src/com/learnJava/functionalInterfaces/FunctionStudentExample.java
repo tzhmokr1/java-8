@@ -13,9 +13,9 @@ public class FunctionStudentExample {
 	static Function<List<Student>, Map<String, Double>> studentFunction = (students -> {
 
 		Map<String, Double> studentGrademap = new HashMap<>();
-		
+
 		students.forEach((student -> {
-			
+
 			if (PredicateStudentExample.p1.test(student)) {
 				studentGrademap.put(student.getName(), student.getGpa());
 			}
@@ -25,6 +25,8 @@ public class FunctionStudentExample {
 
 	});
 
+	
+	
 	public static void main(String[] args) {
 
 		System.out.println(studentFunction.apply(StudentDataBase.getAllStudents()));

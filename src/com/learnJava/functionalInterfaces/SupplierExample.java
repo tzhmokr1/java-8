@@ -18,7 +18,6 @@ public class SupplierExample {
 		Supplier<List<Student>> listSupplier = () -> StudentDataBase.getAllStudents();
 
 		System.out.println("Student is : " + studentSupplier.get());
-
 		System.out.println("Students are : " + listSupplier.get());
 	}
 }

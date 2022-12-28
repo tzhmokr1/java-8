@@ -100,7 +100,7 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [name=" + name + ", gradeLevel=" + gradeLevel + ", gpa=" + gpa + ", gender=" + gender
-				+ ", activities=" + activities + ", noteBooks=" + noteBooks + ", bike=" + bike + "]";
+		return "Student [name = " + name + ", gradeLevel = " + gradeLevel + ", gpa = " + gpa + ", gender = " + gender
+				+ ", activities = " + activities + ", noteBooks = " + noteBooks + ", bike = " + bike + "]";
 	}
 }
