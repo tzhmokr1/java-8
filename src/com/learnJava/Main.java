@@ -36,6 +36,5 @@ public class Main {
 
 		LocalDateTime localDateTime = LocalDateTime.now();
 		System.out.println(localDateTime.getHour());
-
 	}
 }

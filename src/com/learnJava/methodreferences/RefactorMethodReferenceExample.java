@@ -10,16 +10,12 @@ import java.util.function.Predicate;
 public class RefactorMethodReferenceExample {
 
 	static Predicate<Student> p1 = (s) -> s.getGradeLevel() >= 3;
-
 	static Predicate<Student> p2 = RefactorMethodReferenceExample::greaterThanGreadeLevel;
 	
-	
 	static public boolean greaterThanGreadeLevel(Student s) {
-
 		return s.getGradeLevel() >= 3;
 	}
 
-	
 	
 	
 	public static void main(String[] args) {
