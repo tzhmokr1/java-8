@@ -15,6 +15,7 @@ public class StreamsJoiningExample {
                 .collect(Collectors.joining()); // appends all the strings to produce the output,
     }
 
+    
     public static String joiningWithDelimiter(){
 
         return StudentDataBase.getAllStudents().stream()
@@ -22,6 +23,7 @@ public class StreamsJoiningExample {
                 .collect(Collectors.joining("-"));
     }
 
+    
     public static String joiningWithDelimiterWithPrefix(){
 
 		return StudentDataBase.getAllStudents().stream().map(Student::getName)

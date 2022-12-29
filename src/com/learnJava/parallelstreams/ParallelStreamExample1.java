@@ -15,30 +15,28 @@ public class ParallelStreamExample1 {
        long start = System.currentTimeMillis();
         List<String> studentActivities = StudentDataBase.getAllStudents()
                 .stream()
-                .map(Student::getActivities) //Stream<List<String>>
-                .flatMap(List::stream) //<Stream<String>
+                .map(Student::getActivities)	//Stream<List<String>>
+                .flatMap(List::stream) 			//<Stream<String>
                 .collect(toList());
 
        long duration = System.currentTimeMillis()-start;
        System.out.println("Duration in sequential stream : "+ duration);
-
-        return studentActivities;
+       return studentActivities;
     }
 
+   
     public static List<String> parallelStream() {
 
         long start = System.currentTimeMillis();
         List<String> studentActivities = StudentDataBase.getAllStudents()
                 .parallelStream()
-                .map(Student::getActivities) //Stream<List<String>>
-                .flatMap(List::stream) //<Stream<String>
+                .map(Student::getActivities)	//Stream<List<String>>
+                .flatMap(List::stream)			//<Stream<String>
                 .collect(toList());
 
         long duration = System.currentTimeMillis()-start;
         System.out.println("Duration in parallel stream : "+ duration);
-
         return studentActivities;
-
     }
 
 

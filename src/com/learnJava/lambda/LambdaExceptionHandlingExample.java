@@ -20,7 +20,6 @@ public class LambdaExceptionHandlingExample {
 	};
 
 	
-	
 	static Consumer<Student> printNameInUpperCase(Consumer<Student> consumer) {
 
 		return name -> {
@@ -32,8 +31,6 @@ public class LambdaExceptionHandlingExample {
 		};
 	}
 
-	
-	
 	public static void main(String[] args) {
 
 		List<Student> studentList = new ArrayList<>();

@@ -7,13 +7,8 @@ import java.util.function.Predicate;
 
 public class StreamsFilterMapReduceExample {
 
-    static Predicate<Student> genderPredicte =(student -> {
-        return student.getGender().equals("male");
-    });
-
-    static Predicate<Student> gradeLevel =(student -> {
-        return student.getGradeLevel()==2.0;
-    });
+    static Predicate<Student> genderPredicte =(student -> { return student.getGender().equals("male"); });
+    static Predicate<Student> gradeLevel =(student -> { return student.getGradeLevel()==2.0; });
 
     private static int noOfNoteBooks(){
 

@@ -32,9 +32,7 @@ public class StreamsExample {
 											System.out.println("After 2nd filter:  " + i);
 										}))
 										.collect(Collectors.toMap(Student::getName, Student::getActivities)); // collect starts the whole process
-		System.out.println("studentMap  : " + studentMap);
-
 		
-
+		System.out.println("studentMap  : " + studentMap);
 	}
 }

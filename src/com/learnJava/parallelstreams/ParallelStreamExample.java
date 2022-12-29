@@ -1,14 +1,7 @@
 package com.learnJava.parallelstreams;
 
-import java.time.Duration;
-import java.time.LocalTime;
-import java.time.temporal.TemporalUnit;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
-
-import static java.util.concurrent.TimeUnit.MINUTES;
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class ParallelStreamExample {
 
@@ -22,6 +15,7 @@ public class ParallelStreamExample {
 		long end = System.currentTimeMillis();
 		return end - start;
 	}
+	
 
 	public static int sum_sequential_stream() {
 
@@ -29,6 +23,7 @@ public class ParallelStreamExample {
 		return total;
 
 	}
+	
 
 	public static int sum_parallel_stream() {
 
@@ -36,13 +31,11 @@ public class ParallelStreamExample {
 				.sum();// performs the sum of the individual parts and consolidate the result.
 		return total;
 	}
+	
 
-	
-	
 	public static void main(String[] args) {
 
 		System.out.println(Runtime.getRuntime().availableProcessors());
-
 		long sequentialDuration = checkPerformanceResult(ParallelStreamExample::sum_sequential_stream, 200);
 		System.out.println("sequentialDuration in MilliSeconds: " + sequentialDuration);
 		// System.out.println("sequentialDuration in MilliSecs : " +
@@ -52,6 +45,5 @@ public class ParallelStreamExample {
 		System.out.println("parallelDuration in MilliSeconds: " + parallelDuration);
 		// System.out.println("parallelDuration in MilliSecs : " +
 		// TimeUnit.NANOSECONDS.toMillis(parallelDuration));
-
 	}
 }

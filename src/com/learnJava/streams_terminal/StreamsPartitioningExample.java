@@ -25,6 +25,7 @@ public class StreamsPartitioningExample {
 		System.out.println("studentMap : " + studentMap);
 
 	}
+	
 
 	public static void partitioningBy_2() {
 
@@ -37,6 +38,7 @@ public class StreamsPartitioningExample {
 		System.out.println("studentMap : " + studentMap);
 
 	}
+	
 
 	public static void partitioningBy_3() {
 
@@ -49,6 +51,7 @@ public class StreamsPartitioningExample {
 		System.out.println("studentMap : " + studentMap);
 
 	}
+	
 
 	public static void main(String[] args) {
 		partitioningBy_1();
