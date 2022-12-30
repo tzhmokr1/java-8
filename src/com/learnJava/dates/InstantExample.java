@@ -1,8 +1,7 @@
 package com.learnJava.dates;
 
-import java.time.*;
-import java.time.temporal.ChronoField;
-import java.time.temporal.ChronoUnit;
+import java.time.Duration;
+import java.time.Instant;
 
 public class InstantExample {
 
@@ -24,6 +23,5 @@ public class InstantExample {
 
 		Duration duration = Duration.between(instant, instant2);
 		System.out.println("getNano : " + duration.getNano());
-
 	}
 }

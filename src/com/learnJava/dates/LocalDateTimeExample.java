@@ -11,7 +11,7 @@ public class LocalDateTimeExample {
 	public static void main(String[] args) {
 
 		LocalDateTime localDateTime = LocalDateTime.now();
-		System.out.println("localDateTime :" + localDateTime);
+		System.out.println("localDateTime : " + localDateTime);
 		LocalDateTime localDateTime1 = LocalDateTime.of(2018, 01, 01, 12, 10, 00);
 		System.out.println("localDateTime1 : " + localDateTime1);
 
@@ -43,9 +43,6 @@ public class LocalDateTimeExample {
 		System.out.println("atStartOfDay : " + localDate.atStartOfDay());
 
 		System.out.println("toLocalDate : " + localDateTime.toLocalDate());
-		;
 		System.out.println("toLocalTime : " + localDateTime.toLocalTime());
-		;
-
 	}
 }

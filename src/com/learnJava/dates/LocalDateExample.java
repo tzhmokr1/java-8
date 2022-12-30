@@ -1,8 +1,10 @@
 package com.learnJava.dates;
 
-import java.lang.reflect.Method;
-import java.time.*;
-import java.time.temporal.*;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 
 public class LocalDateExample {
 
@@ -40,16 +42,14 @@ public class LocalDateExample {
 		System.out.println("With Year : " + localDate.withYear(2019));
 		System.out.println("With Year Chrono Field : " + localDate.with(ChronoField.YEAR, 2019));
 		System.out.println("With Temporal Adjusters : " + localDate.with(TemporalAdjusters.lastDayOfMonth()));
-		System.out.println(
-				"With Temporal Adjusters : " + localDate.with(TemporalAdjusters.dayOfWeekInMonth(1, DayOfWeek.FRIDAY))); // maps
-																															// to
-																															// the
-																															// first
-																															// friday
-																															// of
-																															// the
-																															// week
-
+		System.out.println("With Temporal Adjusters : " + localDate.with(TemporalAdjusters.dayOfWeekInMonth(1, DayOfWeek.FRIDAY))); // maps
+																																	// to
+																																	// the
+																																	// first
+																																	// friday
+																																	// of
+																																	// the
+																																	// week
 		/**
 		 * Unsupported Scenarios
 		 */
@@ -67,6 +67,5 @@ public class LocalDateExample {
 		System.out.println("isBefore : " + localDate1.isBefore(localDate));
 		System.out.println("isAfter : " + localDate1.isAfter(localDate));
 		System.out.println("isEqual : " + localDate1.isEqual(localDate));
-
 	}
 }
