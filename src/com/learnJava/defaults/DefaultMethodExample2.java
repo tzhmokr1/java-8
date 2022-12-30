@@ -13,6 +13,7 @@ public class DefaultMethodExample2 {
 	static Comparator<Student> gpaComparator = Comparator.comparing(Student::getGpa);
 	static Comparator<Student> genderComparator = Comparator.comparing(Student::getGender);
 	static Comparator<Student> gradeComparator = Comparator.comparing(Student::getGradeLevel);
+	
 	static Consumer<Student> studentConsumer = student -> System.out.println("student : " + student);
 
 	public static void sortByName(List<Student> studentList) {
@@ -51,9 +52,13 @@ public class DefaultMethodExample2 {
 		List<Student> studentList = StudentDataBase.getAllStudents();
 		System.out.println("Original List");
 		studentList.forEach(student -> System.out.println("student : " + student));
-		/*
-		 * sortByGender(); sortByName(studentList); sortByGPA(studentList);
-		 */
+		
+		sortByGender();
+		
+		sortByName(studentList);
+		
+		sortByGPA(studentList);
+		 
 		comparatorChaining();
 	}
 }

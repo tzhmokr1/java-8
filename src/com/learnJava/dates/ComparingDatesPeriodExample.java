@@ -16,8 +16,8 @@ public class ComparingDatesPeriodExample {
 		 * until - Period
 		 */
 		Period period = localDate.until(localDate1);
-		System.out.println("getDays : " + period.getDays()); // results in 30 days performs (31-1)
-		System.out.println("getMonths : " + period.getMonths()); // results in 0 days (12-01)
+		System.out.println("getDays : " + period.getDays());		// results in 30 days performs (31-1)
+		System.out.println("getMonths : " + period.getMonths());	// results in 0 days (12-01)
 
 		Period period1 = Period.ofDays(10);
 		System.out.println("getDays : " + period1.getDays());

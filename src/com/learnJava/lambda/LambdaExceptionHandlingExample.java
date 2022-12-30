@@ -36,6 +36,7 @@ public class LambdaExceptionHandlingExample {
 		List<Student> studentList = new ArrayList<>();
 		studentList.add(new Student());
 		studentList.forEach(studentConsumer);
-		studentList.forEach(printNameInUpperCase((student) -> System.out.println(student.getName().toUpperCase())));
+		studentList.forEach(studentConsumer);
+		//studentList.forEach(printNameInUpperCase((student) -> System.out.println(student.getName().toUpperCase())));
 	}
 }
